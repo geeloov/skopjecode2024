@@ -41,4 +41,5 @@ Route::middleware(['auth', 'verified', "showDashboard"])->group(function () {
     Route::get("/answer/{answer}", [QuizController::class, "showAnswer"])->name("question.showAnswer");
 });
 
+// Route::get("/test", [QuizController::class, "test"]);
 require __DIR__ . '/auth.php';

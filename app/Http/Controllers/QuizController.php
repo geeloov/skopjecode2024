@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Major;
 use App\Models\Answer;
 use App\Models\Question;
 use App\Models\University;
@@ -40,8 +41,8 @@ class QuizController extends Controller
     public function addAnswers(Question $question)
     {
         $answers = $question->answers;
-        $universities = University::all();
-        return view("quiz.addAnswer", ["question" => $question, "answers" => $answers, "universities" => $universities]);
+        $majors = Major::all();
+        return view("quiz.addAnswer", ["question" => $question, "answers" => $answers, "majors" => $majors]);
     }
 
     public function storeAnswer(Request $request, Question $question)
@@ -58,7 +59,7 @@ class QuizController extends Controller
         ]);
 
         foreach ($universityFromForm as $key => $value) {
-            $answer->universities()->attach($key, [
+            $answer->majors()->attach($key, [
                 "weight" => $value
             ]);
         }
@@ -70,9 +71,11 @@ class QuizController extends Controller
 
     public function showAnswer(Answer $answer)
     {
-        $answer->load("universities");
+        $answer->load("majors");
 
         // dd($answer->universities);
         return view("quiz.showAnswer", ["answer" => $answer]);
     }
+
+    public function test() {}
 }

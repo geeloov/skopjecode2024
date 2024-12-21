@@ -28,7 +28,7 @@ class Answer extends Model
 
     public function majors(): BelongsToMany
     {
-        return $this->belongsToMany(University::class, 'answer_major')
+        return $this->belongsToMany(Major::class, 'answer_major')
             ->withPivot('weight');
     }
 }

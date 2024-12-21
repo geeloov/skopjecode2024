@@ -17,9 +17,9 @@
                    <input type="text" name="answer" placeholder="Answer" required>
 
                    <div class="flex flex-col space-y-5">
-                   @foreach($universities as $uni)
-                        <label for="{{$uni->id}}">{{$uni->name}}</label>
-                        <input type="number" min=0 max=3 required name="{{$uni->id}}" id="{{$uni->id}}">
+                   @foreach($majors as $major)
+                        <label for="{{$major->id}}">{{$major->name}}</label>
+                        <input type="number" min=0 max=3 required name="{{$major->id}}" id="{{$major->id}}">
                    @endforeach
                    </div>
                   </div>

@@ -40,4 +40,9 @@ class Major extends Model
     {
         return $this->hasMany(Result::class, 'major3');
     }
+
+    public function careers(): HasMany
+    {
+        return $this->hasMany(Career::class);
+    }
 }

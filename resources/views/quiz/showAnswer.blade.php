@@ -4,8 +4,8 @@
             <h3 class="text-">{{$answer->answer}}</h3>
 
             <ul>
-                @foreach($answer->universities as $uni)
-                    <li>{{$uni->name}}: {{$uni->pivot->weight}}</li>
+                @foreach($answer->majors as $major)
+                    <li>{{$major->name}}: {{$major->pivot->weight}}</li>
                 @endforeach
             </ul>
         </div>
