@@ -114,7 +114,6 @@ class AnswerSeeder extends Seeder
                 "answer" => "Информатика",
                 "question_id" => 6
             ],
-            
             ]);
     }
 }
