@@ -15,6 +15,7 @@ class Answer extends Model
         "answer",
         "question_id"
     ];
+    protected $with = ['majors'];
 
     public function question(): BelongsTo
     {
