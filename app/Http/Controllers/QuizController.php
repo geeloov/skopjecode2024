@@ -16,9 +16,9 @@ class QuizController extends Controller
     }
 
     public function showQuestionForm()
-    {
-        return view("quiz.createQuestion");
-    }
+{
+    return view('createQuestion'); 
+}
 
     public function storeQuestion(Request $request)
     {
@@ -38,12 +38,30 @@ class QuizController extends Controller
         return view("dashboard", ["questions" => $questions]);
     }
 
-    public function addAnswers(Question $question)
-    {
-        $answers = $question->answers;
-        $majors = Major::all();
-        return view("quiz.addAnswer", ["question" => $question, "answers" => $answers, "majors" => $majors]);
-    }
+   public function addAnswers(Question $question)
+{
+    $answers = $question->answers; 
+    $majors = Major::all(); 
+
+    return view('addAnswer', [
+        'question' => $question,
+        'answers' => $answers,
+        'majors' => $majors,
+    ]);
+}
+
+    public function deleteAnswer(Answer $answer)
+{
+    // Detach all associated majors (if applicable)
+    $answer->majors()->detach();
+
+    // Delete the answer
+    $answer->delete();
+
+    // Redirect back to the question's answers page
+    return redirect()->route("question.addAnswers", ["question" => $answer->question_id])
+                     ->with("success", "Одговорот е успешно избришан!");
+}
 
     public function storeAnswer(Request $request, Question $question)
     {

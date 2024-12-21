@@ -33,13 +33,29 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'verified', "showDashboard"])->group(function () {
     Route::get("/dashboard", [QuizController::class, "dashboard"])->name("dashboard");
     Route::get("/createQuestion", [QuizController::class, "showQuestionForm"])->name("question.create");
-    Route::post("/createQuestion", [QuizController::class, "storeQuestion"]);
-
+    Route::post("/createQuestion", [QuizController::class, "storeQuestion"])->name("question.store");
     Route::get("/question/{question}", [QuizController::class, "addAnswers"])->name("question.addAnswers");
-    Route::post("/question/{question}", [QuizController::class, "storeAnswer"]);
+    Route::post("/question/{question}", [QuizController::class, "storeAnswer"])->name('question.storeAnswer');
 
+    
+    
     Route::get("/answer/{answer}", [QuizController::class, "showAnswer"])->name("question.showAnswer");
+    Route::delete("/answer/{answer}", [QuizController::class, "deleteAnswer"])->name("answer.delete");
+});
+Route::get('/about', function () {
+    return view('about');
 });
 
+Route::get('/policy', function () {
+    return view('policy');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('admin', function(){
+    return view('admin');
+});
 // Route::get("/test", [QuizController::class, "test"]);
 require __DIR__ . '/auth.php';
