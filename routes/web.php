@@ -68,7 +68,6 @@ Route::get('/admin-statistics', function(){
     return view('admin_stats');
 });
 
-=======
 Route::get('/contact', function () {
     return view('contact');
 });

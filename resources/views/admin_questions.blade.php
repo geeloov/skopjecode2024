@@ -10,9 +10,9 @@
 <body>
     <div class="min-h-screen bg-gradient-to-r from-cyan-400 to-blue-500">
         <!-- Sidebar -->
-        <div class="fixed left-0 top-0 h-full w-64 bg-white">
+        <div class="fixed left-0 top-0 h-full w-64 bg-white flex flex-col">
             <!-- Logo -->
-            <div class="p-4 border-b border-white/20 ">
+            <div class="p-4 border-b border-white/20">
                 <img src="{{ asset('images/logo.png') }}" alt="NextQuestion" class="h-[70px]">
             </div>
             
@@ -32,15 +32,25 @@
                     <span>Факултети</span>
                 </a>
                 
-                
                 <a href="{{ url('/admin-statistics') }}" class="flex items-center space-x-3 px-4 py-2 rounded-lg text-black hover:bg-blue-900/20">
                     <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
                     </svg>
                     <span>Статистика</span>
                 </a>
-            </nav>
+                <!-- Logout Button -->
+                <form action="{{ url('/logout') }}" method="POST" class="absolute bottom-5">
+                    @csrf
+                    <button type="submit" class="w-full flex items-center space-x-3 px-4 py-2 rounded-lg text-black hover:bg-red-100 transition-colors ">
+                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+                        </svg>
+                        <span>Одјави се</span>
+                    </button>
+                </form>
+            </nav>            
         </div>
+        
     
         <!-- Main Content -->
         <div class="ml-64 p-8">
