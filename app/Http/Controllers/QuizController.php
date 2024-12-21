@@ -87,9 +87,25 @@ class QuizController extends Controller
         $keys = array_keys($percentages);
         $values = array_values($percentages);
 
-        $majorId1 = Major::select("id")->where("name", $keys[0])->pluck("id")[0];
-        $majorId2 = Major::select("id")->where("name", $keys[1])->pluck("id")[0];
-        $majorId3 = Major::select("id")->where("name", $keys[2])->pluck("id")[0];
+        $majorId1 = Major::select("id")->where("name", $keys[0])->pluck("id");
+        $majorId2 = Major::select("id")->where("name", $keys[1])->pluck("id");
+        $majorId3 = Major::select("id")->where("name", $keys[2])->pluck("id");
+
+        if ($majorId1->isEmpty()) {
+            $majorId1 = null;
+        } else {
+            $majorId1 = $majorId1[0];
+        }
+        if ($majorId2->isEmpty()) {
+            $majorId2 = null;
+        } else {
+            $majorId2 = $majorId2[0];
+        }
+        if ($majorId3->isEmpty()) {
+            $majorId3 = null;
+        } else {
+            $majorId3 = $majorId3[0];
+        }
 
         $user->result()->create([
             "major1" => $majorId1,
