@@ -26,7 +26,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get("/quiz", [QuizController::class, "showQuiz"])->name("quiz.show");
+    // Route::get("/quiz/{index?}", [QuizController::class, "showQuiz"])->name("quiz.show");
+
+    // Route::post('/quiz/submit', [QuizController::class, 'submitQuiz'])->name('quiz.submit');
+    Route::get('/quiz/results', [QuizController::class, 'results'])->name('quiz.results');
+    Route::get('/quiz/{step}', [QuizController::class, 'showStep'])->name('quiz.step');
+    Route::post('/quiz/{step}', [QuizController::class, 'storeAnswer'])->name('quiz.store');
 });
 
 // available routes only for admin

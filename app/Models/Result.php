@@ -12,12 +12,12 @@ class Result extends Model
 
     protected $fillable = [
         'user_id',
-        'university1',
-        'university2',
-        'university3',
-        'university1_prob',
-        'university2_prob',
-        'university3_prob',
+        'major1',
+        'major2',
+        'major3',
+        'major1_prob',
+        'major2_prob',
+        'major3_prob',
     ];
 
     public function user(): BelongsTo
