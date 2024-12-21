@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
 
 // available routes only for admin
 Route::middleware(['auth', 'verified', "showDashboard"])->group(function () {
-    Route::get("/dashboard", [QuizController::class, "dashboard"])->name("dashboard");
+    Route::get("/admin-dashboard", [QuizController::class, "dashboard"])->name("dashboard");
     Route::get("/createQuestion", [QuizController::class, "showQuestionForm"])->name("question.create");
     Route::post("/createQuestion", [QuizController::class, "storeQuestion"])->name("question.store");
     Route::get("/question/{question}", [QuizController::class, "addAnswers"])->name("question.addAnswers");
@@ -50,6 +50,25 @@ Route::get('/policy', function () {
     return view('policy');
 });
 
+Route::get('/main', function(){
+    return view('main');
+});
+Route::get('/results', function(){
+    return view('results');
+});
+Route::get('/admin-main', function(){
+    return view('admin_questions');
+});
+
+Route::get('/admin-faculties', function(){
+    return view('admin_faculties');
+});
+
+Route::get('/admin-statistics', function(){
+    return view('admin_stats');
+});
+
+=======
 Route::get('/contact', function () {
     return view('contact');
 });
