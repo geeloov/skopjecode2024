@@ -28,12 +28,12 @@
             <div class="bg-white/20 backdrop-blur-sm rounded-xl p-6 flex flex-col items-center transform transition-all duration-300 hover:scale-105 hover:bg-white/30 hover:shadow-xl cursor-pointer">
                 <div class="w-16 h-16 mb-4 transform transition-transform duration-300 hover:rotate-6">
                     <svg class="w-full h-full text-white" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4zm6 5H6v-.99c.2-.72 3.3-2.01 6-2.01s5.8 1.29 6 2v1z"/>
                     </svg>
                 </div>
-                <h3 class="text-white text-xl font-semibold mb-2 transition-all duration-300 hover:text-cyan-100">Креирај прашалник</h3>
+                <h3 class="text-white text-xl font-semibold mb-2 transition-all duration-300 hover:text-cyan-100">Персонализирани прашања</h3>
                 <p class="text-white/80 text-sm">
-                    Креирајте прашалник кој им помага на студентите
+                    Идентификувајте ги вашите интереси и преференции
                 </p>
             </div>
 
@@ -41,12 +41,12 @@
             <div class="bg-white/20 backdrop-blur-sm rounded-xl p-6 flex flex-col items-center transform transition-all duration-300 hover:scale-105 hover:bg-white/30 hover:shadow-xl cursor-pointer">
                 <div class="w-16 h-16 mb-4 transform transition-transform duration-300 hover:rotate-6">
                     <svg class="w-full h-full text-white" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M17 7h-4v2h4c1.65 0 3 1.35 3 3s-1.35 3-3 3h-4v2h4c2.76 0 5-2.24 5-5s-2.24-5-5-5zm-6 8H7c-1.65 0-3-1.35-3-3s1.35-3 3-3h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-2zm-3-4h8v2H8z"/>
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                     </svg>
                 </div>
-                <h3 class="text-white text-xl font-semibold mb-2 transition-all duration-300 hover:text-cyan-100">Поврзете ги со кариерите</h3>
+                <h3 class="text-white text-xl font-semibold mb-2 transition-all duration-300 hover:text-cyan-100">Персонализирани прашања</h3>
                 <p class="text-white/80 text-sm">
-                    Поврзете прашања со кариери
+                    Идентификувајте ги вашите интереси и преференции
                 </p>
             </div>
 
@@ -57,9 +57,9 @@
                         <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
                     </svg>
                 </div>
-                <h3 class="text-white text-xl font-semibold mb-2 transition-all duration-300 hover:text-cyan-100">Поврзи ги универзитетите</h3>
+                <h3 class="text-white text-xl font-semibold mb-2 transition-all duration-300 hover:text-cyan-100">Персонализирани прашања</h3>
                 <p class="text-white/80 text-sm">
-                    Конекција помеѓу универзитети и области
+                    Идентификувајте ги вашите интереси и преференции
                 </p>
             </div>
         </div>
@@ -67,10 +67,9 @@
 
     
             <!-- CTA Button -->
-            <a href="{{ url('/admin-main') }}" class="bg-white text-blue-500 px-[45px] py-3 rounded-[10px] border border-black font-semibold hover:bg-blue-50 transition-colors">
+            <button class="bg-white text-blue-500 px-[45px] py-3 rounded-[10px] border border-black font-semibold hover:bg-blue-50 transition-colors">
                 Започнете сега
-            </a>
-            
+            </button>
         </div>
     
         <!-- Footer -->
