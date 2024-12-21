@@ -1,47 +1,69 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-cyan-400 to-blue-500 min-h-screen flex items-center justify-center">
+    <div class="bg-white shadow-lg rounded-lg flex max-w-4xl w-full overflow-hidden">
+        <!-- Left Section -->
+        <div class="w-1/2 p-8 flex flex-col justify-center">
+            <img src="{{asset('images/logo.webp')}}" alt="Logo" class="w-32 mb-6">
+            <h2 class="text-3xl font-bold text-blue-600 mb-4">Добредојде</h2>
+            <p class="text-gray-600 mb-6">Логирај се и дознај кое е идеалното место за твоето надградување</p>
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+            <!-- Login Form -->
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                <!-- Email Address -->
+                <div class="mb-4">
+                    <input id="email" type="email" name="email" placeholder="Е-пошта" value="{{ old('email') }}" required autofocus
+                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300">
+                    @error('email')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <!-- Password -->
+                <div class="mb-4">
+                    <input id="password" type="password" name="password" placeholder="Лозинка" required
+                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300">
+                    @error('password')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <!-- Submit Button -->
+                <div class="mb-4">
+                    <button type="submit"
+                        class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200">
+                        Логирај се
+                    </button>
+                </div>
+            </form>
+
+            <!-- Register Link -->
+            <a href="{{route('register')}}" class="text-center text-gray-600">
+                {{ __('Регистрирај се') }}
+            </a>
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <!-- Right Section (Image) -->
+        <div class="w-1/2 hidden md:block">
+            <img src="{{asset('images/graduation.jpg')}}" alt="Graduation" class="w-full h-full object-cover">
         </div>
+    </div>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    <!-- Footer Links -->
+    <footer class="absolute bottom-0 left-0 w-full text-center text-white text-sm py-4 ">
+        <a href="#" class="hover:underline mx-2">За Нас</a> |
+        <a href="#" class="hover:underline mx-2">Контакт</a> |
+        <a href="#" class="hover:underline mx-2">Политика на приватност</a> |
+        <a href="#" class="hover:underline mx-2">Услови на услуга</a>
+    </footer>
+</body>
+</html>
