@@ -14,18 +14,18 @@ return new class extends Migration
         Schema::create('results', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("user_id");
-            $table->unsignedBigInteger("university1"); // [1 => 30%]
-            $table->unsignedBigInteger("university2");
-            $table->unsignedBigInteger("university3");
-            $table->smallInteger("university1_prob");
-            $table->smallInteger("university2_prob");
-            $table->smallInteger("university3_prob");
+            $table->unsignedBigInteger("major1"); // [1 => 30%]
+            $table->unsignedBigInteger("major2");
+            $table->unsignedBigInteger("major3");
+            $table->smallInteger("major1_prob");
+            $table->smallInteger("major2_prob");
+            $table->smallInteger("major3_prob");
             $table->timestamps();
 
             $table->foreign("user_id")->references("id")->on("users");
-            $table->foreign("university1")->references("id")->on("universities")->onUpdate("cascade")->onUpdate("cascade");
-            $table->foreign("university2")->references("id")->on("universities")->onUpdate("cascade")->onUpdate("cascade");
-            $table->foreign("university3")->references("id")->on("universities")->onUpdate("cascade")->onUpdate("cascade");
+            $table->foreign("major1")->references("id")->on("majors")->onUpdate("cascade")->onUpdate("cascade");
+            $table->foreign("major2")->references("id")->on("majors")->onUpdate("cascade")->onUpdate("cascade");
+            $table->foreign("major3")->references("id")->on("majors")->onUpdate("cascade")->onUpdate("cascade");
         });
     }
 

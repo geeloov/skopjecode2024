@@ -25,18 +25,18 @@ class Result extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function university1()
+    public function major1()
     {
-        return $this->belongsTo(University::class, 'university1');
+        return $this->belongsTo(Major::class, 'major1');
     }
 
-    public function university2()
+    public function major2()
     {
-        return $this->belongsTo(University::class, 'university2');
+        return $this->belongsTo(Major::class, 'major2');
     }
 
-    public function university3()
+    public function major3()
     {
-        return $this->belongsTo(University::class, 'university3');
+        return $this->belongsTo(Major::class, 'major3');
     }
 }

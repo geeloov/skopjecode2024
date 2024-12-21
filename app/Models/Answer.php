@@ -26,9 +26,9 @@ class Answer extends Model
         return $this->belongsToMany(User::class, 'answer_user');
     }
 
-    public function universities(): BelongsToMany
+    public function majors(): BelongsToMany
     {
-        return $this->belongsToMany(University::class, 'answer_university')
+        return $this->belongsToMany(University::class, 'answer_major')
             ->withPivot('weight');
     }
 }
