@@ -51,6 +51,8 @@ class QuizController extends Controller
         return redirect()->route('quiz.step', ['step' => $nextStep]);
     }
 
+    
+
     public function results()
     {
         // Retrieve all answers from the session
@@ -130,6 +132,12 @@ class QuizController extends Controller
 {
     return view('createQuestion'); 
 }
+public function showQuestions()
+{
+    $questions = Question::all(); // Assuming you have a Question model
+    return view('admin_questions', compact('questions'));
+}
+
 
     public function storeQuestion(Request $request)
     {
@@ -139,7 +147,7 @@ class QuizController extends Controller
 
         Question::create(["question" => $request->question]);
 
-        return redirect()->route("dashboard");
+        return redirect()->route("question.show");
     }
 
     public function dashboard()
@@ -147,6 +155,20 @@ class QuizController extends Controller
         $questions = Question::all();
         // dd($questions[0]->question);
         return view("dashboard", ["questions" => $questions]);
+    }
+
+    public function destroyQuestion($id)
+    {
+        $question = Question::find($id);
+
+        if (!$question) {
+            return redirect()->back()->with('error', 'Question not found.');
+        }
+
+      
+        $question->delete();
+
+        return redirect()->route('question.show');
     }
 
    public function addAnswers(Question $question)
@@ -174,29 +196,29 @@ class QuizController extends Controller
                      ->with("success", "Одговорот е успешно избришан!");
 }
 
-    // public function storeAnswer(Request $request, Question $question)
-    // {
-    //     // dd($request->all());
-    //     $universityFromForm = $request->except("answer", "_token");
+    public function addAnswer(Request $request, Question $question)
+    {
+        // dd($request->all());
+        $majorFromForm = $request->except("answer", "_token");
 
-    //     $request->validate([
-    //         "answer" => ["required", "string"]
-    //     ]);
+        $request->validate([
+            "answer" => ["required", "string"]
+        ]);
 
-    //     $answer = $question->answers()->create([
-    //         "answer" => $request->answer
-    //     ]);
+        $answer = $question->answers()->create([
+            "answer" => $request->answer
+        ]);
 
-    //     foreach ($universityFromForm as $key => $value) {
-    //         $answer->majors()->attach($key, [
-    //             "weight" => $value
-    //         ]);
-    //     }
+        foreach ($majorFromForm as $key => $value) {
+            $answer->majors()->attach($key, [
+                "weight" => $value
+            ]);
+        }
 
-    //     // dd($answer);
+        // dd($answer);
 
-    //     return redirect()->route("question.addAnswers", ["question" => $question]);
-    // }
+        return redirect()->route("question.addAnswers", ["question" => $question]);
+    }
 
     public function showAnswer(Answer $answer)
     {

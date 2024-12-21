@@ -20,7 +20,7 @@
                 <h2 class="text-xl font-semibold mb-4">{{ $question->question }}</h2>
 
             
-                <form action="{{ route('question.storeAnswer', $question) }}" method="POST" class="space-y-4">
+                <form action="{{ route('question.addAnswer', $question) }}" method="POST" class="space-y-4">
                     @csrf
                     <label for="answer" class="block text-lg">Одговор:</label>
                     <input 
@@ -78,7 +78,7 @@
 
             </div>
              <a 
-                        href="{{route('dashboard')}}" 
+                        href="{{route('question.show')}}" 
                         class="absolute bottom-8 right-8 px-6 py-3 bg-blue-700 text-white font-semibold rounded-lg shadow hover:bg-blue-800 transition-colors"
                     >
                         Назад
