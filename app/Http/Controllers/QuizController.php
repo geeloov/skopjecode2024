@@ -122,7 +122,7 @@ class QuizController extends Controller
             "major3_prob" => $values[2] ?? null,
         ]);
 
-
+        //test
 
         $result = $user->result()->with("relatedMajor1", "relatedMajor2", "relatedMajor3")->first();
 
