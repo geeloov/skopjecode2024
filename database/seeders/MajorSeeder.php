@@ -14,13 +14,13 @@ class MajorSeeder extends Seeder
     public function run(): void
     {
         Major::insert([
-            ["name" => "technical",],
-            ["name" => "natural"],
-            ["name" => "social"],
-            ["name" => "arts"],
-            ["name" => "business"],
-            ["name" => "medical"],
-            ["name" => "agriculture"]
+            ["name" => "Технички науки",],
+            ["name" => "Природно-научни науки"],
+            ["name" => "Општествени науки"],
+            ["name" => "Уметности и хуманистички науки"],
+            ["name" => "Бизнис и економски науки"],
+            ["name" => "Медицински науки"],
+            ["name" => "Земјоделски науки"]
         ]);
     }
 }
