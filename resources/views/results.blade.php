@@ -26,7 +26,7 @@
             <div class="text-white text-center mb-5">
                 <h2 class="text-2xl font-bold mb-3">{{$result->relatedMajor1->name}}</h2>
                 <div class="text-4xl font-bold mb-3">{{$result->major1_prob}}%</div>
-                <p class="text-sm">Природно-научните науки се идеални за оние кои сакаат да ја истражуваат природата преку дисциплини како Биологија, Хемија, Физика или Географија. Овие студии отвораат можности за научни истражувања и примена на знаења за општествена корист.</p>
+                <p class="text-sm">{{$result->relatedMajor1->description}}</p>
             </div>
             
             <div class="space-y-2.5">
@@ -55,7 +55,7 @@
             <div class="text-white text-center mb-5">
                 <h2 class="text-2xl font-bold mb-3">{{$result->relatedMajor2->name}}</h2>
                 <div class="text-4xl font-bold mb-3">{{$result->major2_prob}}%</div>
-                <p class="text-sm">Природно-научните науки се идеални за оние кои сакаат да ја истражуваат природата преку дисциплини како Биологија, Хемија, Физика или Географија. Овие студии отвораат можности за научни истражувања и примена на знаења за општествена корист.</p>
+                <p class="text-sm">{{$result->relatedMajor2->description}}</p>
             </div>
             
             <div class="space-y-2.5">
@@ -84,7 +84,7 @@
             <div class="text-white text-center mb-5">
                 <h2 class="text-2xl font-bold mb-3">{{$result->relatedMajor3->name}}</h2>
                 <div class="text-4xl font-bold mb-3">{{$result->major3_prob}}%</div>
-                <p class="text-sm">Природно-научните науки се идеални за оние кои сакаат да ја истражуваат природата преку дисциплини како Биологија, Хемија, Физика или Географија. Овие студии отвораат можности за научни истражувања и примена на знаења за општествена корист.</p>
+                <p class="text-sm">{{$result->relatedMajor3->description}}</p>
             </div>
             
             <div class="space-y-2.5">
@@ -110,10 +110,18 @@
 
     </div>
         <!-- Navigation Button -->
-        <a href="" class="bg-white text-blue-500 px-[45px] py-3 rounded-[10px] font-semibold border border-black transition-all duration-300 hover:shadow-[0_4px_20px_rgb(0,0,0,0.25)] hover:bg-blue-50 ">
+        {{-- <a href="" class="bg-white text-blue-500 px-[45px] py-3 rounded-[10px] font-semibold border border-black transition-all duration-300 hover:shadow-[0_4px_20px_rgb(0,0,0,0.25)] hover:bg-blue-50 ">
             Почетна
-        </a>
-
+        </a> --}}
+            <form action="{{ route('logout') }}" method="POST" class="bottom-3">
+                    @csrf
+                    <button type="submit" class="flex flex-row space-x-3 bg-white text-blue-500 px-[50px] py-3 rounded-[10px] font-semibold border border-black transition-all duration-300 hover:shadow-[0_4px_20px_rgb(0,0,0,0.25)] hover:bg-blue-50 ">
+                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+                        </svg>
+                        <span>Одјави се</span>
+                    </button>
+                </form>
     
 </body>
 </html>

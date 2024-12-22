@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
             MajorSeeder::class,
             CareerSeeder::class,
             QuestionSeeder::class,
-            AnswerSeeder::class
+            AnswerSeeder::class,
+            AnswerMajorSeeder::class
         ]);
     }
 }
