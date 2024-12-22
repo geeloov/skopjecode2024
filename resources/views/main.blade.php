@@ -67,16 +67,16 @@
 
     
             <!-- CTA Button -->
-            <button class="bg-white text-blue-500 px-[45px] py-3 rounded-[10px] border border-black font-semibold hover:bg-blue-50 transition-colors">
+            <a href="{{route('quiz.show')}}" class="bg-white text-blue-500 px-[45px] py-3 rounded-[10px] border border-black font-semibold hover:bg-blue-50 transition-colors">
                 Започнете сега
-            </button>
+            </a>
         </div>
     
         <!-- Footer -->
         <footer class="absolute bottom-0 left-0 w-full text-center text-white text-sm py-4 ">
-            <a href="#" class="hover:underline mx-2">За Нас</a> |
-            <a href="#" class="hover:underline mx-2">Контакт</a> |
-            <a href="#" class="hover:underline mx-2">Политика на приватност</a> |
+            <a href="{{route('about')}}" class="hover:underline mx-2">За Нас</a> |
+            <a href="{{route('contact')}}" class="hover:underline mx-2">Контакт</a> |
+            <a href="{{route('policy')}}" class="hover:underline mx-2">Политика на приватност</a> |
             <a href="#" class="hover:underline mx-2">Услови на услуга</a>
         </footer>
     </div>
