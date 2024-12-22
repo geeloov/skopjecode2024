@@ -16,31 +16,31 @@ class AnswerSeeder extends Seeder
         Answer::insert([
             [
                 "answer" => "Голем град",
-                "quesion_id" => 1
+                "question_id" => 1
             ],
             [
                 "answer" => "Предградие",
-                "quesion_id" => 1
+                "question_id" => 1
             ],
             [
                 "answer" => "Рурална средина",
-                "quesion_id" => 1
+                "question_id" => 1
             ],
             [
                 "answer" => "Астронаут/научник",
-                "quesion_id" => 2
+                "question_id" => 2
             ],
             [
                 "answer" => "Доктор/ветеринар",
-                "quesion_id" => 2
+                "question_id" => 2
             ],
             [
                 "answer" => "Уметник/музичар",
-                "quesion_id" => 2
+                "question_id" => 2
             ],
             [
                 "answer" => "Претприемач",
-                "quesion_id" => 2
+                "question_id" => 2
             ],
             [
                 "answer" => "Sci-Fi",
@@ -114,6 +114,6 @@ class AnswerSeeder extends Seeder
                 "answer" => "Информатика",
                 "question_id" => 6
             ],
-            ]);
+        ]);
     }
 }

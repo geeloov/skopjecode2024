@@ -29,21 +29,34 @@ Route::middleware('auth')->group(function () {
     // Route::get("/quiz/{index?}", [QuizController::class, "showQuiz"])->name("quiz.show");
 
     // Route::post('/quiz/submit', [QuizController::class, 'submitQuiz'])->name('quiz.submit');
-    Route::get('/quiz/results', [QuizController::class, 'results'])->name('quiz.results');
+    Route::get('/quiz/results', [QuizController::class, 'results'])->name('quiz.results'); // dokolku nema odgovoreno prasanja i ode odma na results go nosi na 1 prasanje
     Route::get('/quiz/{step}', [QuizController::class, 'showStep'])->name('quiz.step');
     Route::post('/quiz/{step}', [QuizController::class, 'storeAnswer'])->name('quiz.store');
 });
 
 // available routes only for admin
-Route::middleware(['auth', 'verified', "showDashboard"])->group(function () {
-    Route::get("/admin-dashboard", [QuizController::class, "dashboard"])->name("dashboard");
+// dokolku ne e na admin go redirektira na quiz.step za odma da pocne so resavanje na kvizot
+Route::middleware(['auth', 'verified', "isAdmin"])->group(function () {
+    Route::get("/dashboard", [QuizController::class, "dashboard"])->name("dashboard");
     Route::get("/createQuestion", [QuizController::class, "showQuestionForm"])->name("question.create");
     Route::post("/createQuestion", [QuizController::class, "storeQuestion"])->name("question.store");
     Route::get("/question/{question}", [QuizController::class, "addAnswers"])->name("question.addAnswers");
     Route::post("/question/{question}", [QuizController::class, "storeAnswer"])->name('question.storeAnswer');
 
-    
-    
+    Route::get('/admin-main', function () {
+        return view('admin_questions');
+    });
+
+    Route::get('/admin-faculties', function () {
+        return view('admin_faculties');
+    });
+
+    Route::get('/admin-statistics', function () {
+        return view('admin_stats');
+    });
+
+
+
     Route::get("/answer/{answer}", [QuizController::class, "showAnswer"])->name("question.showAnswer");
     Route::delete("/answer/{answer}", [QuizController::class, "deleteAnswer"])->name("answer.delete");
 });
@@ -55,30 +68,19 @@ Route::get('/policy', function () {
     return view('policy');
 });
 
-Route::get('/main', function(){
+Route::get('/main', function () {
     return view('main');
 });
-Route::get('/results', function(){
+Route::get('/results', function () {
     return view('results');
-});
-Route::get('/admin-main', function(){
-    return view('admin_questions');
-});
-
-Route::get('/admin-faculties', function(){
-    return view('admin_faculties');
-});
-
-Route::get('/admin-statistics', function(){
-    return view('admin_stats');
 });
 
 Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('admin', function(){
-    return view('admin');
+Route::get('/admin', function () {
+    return view('admin'); // ?
 });
 // Route::get("/test", [QuizController::class, "test"]);
 require __DIR__ . '/auth.php';

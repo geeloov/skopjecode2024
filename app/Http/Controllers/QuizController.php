@@ -9,6 +9,8 @@ use App\Models\University;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 
+use function PHPUnit\Framework\isNull;
+
 class QuizController extends Controller
 {
 
@@ -74,11 +76,11 @@ class QuizController extends Controller
         }
 
 
-        $total = array_sum($majorWeights); 
+        $total = array_sum($majorWeights);
 
         $percentages = [];
         foreach ($majorWeights as $category => $value) {
-            $percentages[$category] = $total > 0 ? round(($value / $total) * 100, 0) : 0; 
+            $percentages[$category] = $total > 0 ? round(($value / $total) * 100, 0) : 0;
         }
 
         arsort($percentages);
@@ -87,9 +89,13 @@ class QuizController extends Controller
         $keys = array_keys($percentages);
         $values = array_values($percentages);
 
-        $majorId1 = Major::select("id")->where("name", $keys[0])->pluck("id");
-        $majorId2 = Major::select("id")->where("name", $keys[1])->pluck("id");
-        $majorId3 = Major::select("id")->where("name", $keys[2])->pluck("id");
+        if (count($percentages) == 0) {
+            return redirect()->route("quiz.step", ["step" => 1]);
+        }
+
+        $majorId1 = Major::select("id")->where("name", $keys[0] ?? null)->pluck("id");
+        $majorId2 = Major::select("id")->where("name", $keys[1] ?? null)->pluck("id");
+        $majorId3 = Major::select("id")->where("name", $keys[2] ?? null)->pluck("id");
 
         if ($majorId1->isEmpty()) {
             $majorId1 = null;
@@ -111,25 +117,24 @@ class QuizController extends Controller
             "major1" => $majorId1,
             "major2" => $majorId2,
             "major3" => $majorId3,
-            "major1_prob" => $values[0],
-            "major2_prob" => $values[1],
-            "major3_prob" => $values[2],
+            "major1_prob" => $values[0] ?? null,
+            "major2_prob" => $values[1] ?? null,
+            "major3_prob" => $values[2] ?? null,
         ]);
 
-        dd($percentages);
-        dd("Here");
 
 
-        
+        $result = $user->result()->with("relatedMajor1", "relatedMajor2", "relatedMajor3")->first();
+
         session()->forget('quiz_answers');
 
-        return view('quiz.results', compact('answers'));
+        return view('results', ["result" => $result]);
     }
 
     public function showQuestionForm()
-{
-    return view('createQuestion'); 
-}
+    {
+        return view('createQuestion');
+    }
 
     public function storeQuestion(Request $request)
     {
@@ -149,30 +154,30 @@ class QuizController extends Controller
         return view("dashboard", ["questions" => $questions]);
     }
 
-   public function addAnswers(Question $question)
-{
-    $answers = $question->answers; 
-    $majors = Major::all(); 
+    public function addAnswers(Question $question)
+    {
+        $answers = $question->answers;
+        $majors = Major::all();
 
-    return view('addAnswer', [
-        'question' => $question,
-        'answers' => $answers,
-        'majors' => $majors,
-    ]);
-}
+        return view('addAnswer', [
+            'question' => $question,
+            'answers' => $answers,
+            'majors' => $majors,
+        ]);
+    }
 
     public function deleteAnswer(Answer $answer)
-{
-    // Detach all associated majors (if applicable)
-    $answer->majors()->detach();
+    {
+        // Detach all associated majors (if applicable)
+        $answer->majors()->detach();
 
-    // Delete the answer
-    $answer->delete();
+        // Delete the answer
+        $answer->delete();
 
-    // Redirect back to the question's answers page
-    return redirect()->route("question.addAnswers", ["question" => $answer->question_id])
-                     ->with("success", "Одговорот е успешно избришан!");
-}
+        // Redirect back to the question's answers page
+        return redirect()->route("question.addAnswers", ["question" => $answer->question_id])
+            ->with("success", "Одговорот е успешно избришан!");
+    }
 
     // public function storeAnswer(Request $request, Question $question)
     // {
