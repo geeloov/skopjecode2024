@@ -1,0 +1,357 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+class AnswerMajorSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        DB::table("answer_major")->insert([
+            //Во каква средина живееш?
+            ["major_id" => 1, "answer_id" => 1, "weight" => 3],
+            ["major_id" => 2, "answer_id" => 1, "weight" => 1],
+            ["major_id" => 3, "answer_id" => 1, "weight" => 3],
+            ["major_id" => 4, "answer_id" => 1, "weight" => 2],
+            ["major_id" => 5, "answer_id" => 1, "weight" => 3],
+            ["major_id" => 6, "answer_id" => 1, "weight" => 2],
+            ["major_id" => 7, "answer_id" => 1, "weight" => 0],
+
+            ["major_id" => 1, "answer_id" => 2, "weight" => 2],
+            ["major_id" => 2, "answer_id" => 2, "weight" => 2],
+            ["major_id" => 3, "answer_id" => 2, "weight" => 2],
+            ["major_id" => 4, "answer_id" => 2, "weight" => 1],
+            ["major_id" => 5, "answer_id" => 2, "weight" => 2],
+            ["major_id" => 6, "answer_id" => 2, "weight" => 2],
+            ["major_id" => 7, "answer_id" => 2, "weight" => 1],
+
+            ["major_id" => 1, "answer_id" => 3, "weight" => 1],
+            ["major_id" => 2, "answer_id" => 3, "weight" => 3],
+            ["major_id" => 3, "answer_id" => 3, "weight" => 1],
+            ["major_id" => 4, "answer_id" => 3, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 3, "weight" => 1],
+            ["major_id" => 6, "answer_id" => 3, "weight" => 2],
+            ["major_id" => 7, "answer_id" => 3, "weight" => 3],
+
+            //Каков тип на личност си?
+            ["major_id" => 1, "answer_id" => 4, "weight" => 3],
+            ["major_id" => 2, "answer_id" => 4, "weight" => 2],
+            ["major_id" => 3, "answer_id" => 4, "weight" => 1],
+            ["major_id" => 4, "answer_id" => 4, "weight" => 2],
+            ["major_id" => 5, "answer_id" => 4, "weight" => 1],
+            ["major_id" => 6, "answer_id" => 4, "weight" => 1],
+            ["major_id" => 7, "answer_id" => 4, "weight" => 2],
+
+            ["major_id" => 1, "answer_id" => 5, "weight" => 1],
+            ["major_id" => 2, "answer_id" => 5, "weight" => 1],
+            ["major_id" => 3, "answer_id" => 5, "weight" => 3],
+            ["major_id" => 4, "answer_id" => 5, "weight" => 2],
+            ["major_id" => 5, "answer_id" => 5, "weight" => 3],
+            ["major_id" => 6, "answer_id" => 5, "weight" => 3],
+            ["major_id" => 7, "answer_id" => 5, "weight" => 2],
+
+
+            //Што сакаше да бидеш кога ќе пораснеш?
+            ["major_id" => 1, "answer_id" => 6, "weight" => 3],
+            ["major_id" => 2, "answer_id" => 6, "weight" => 3],
+            ["major_id" => 3, "answer_id" => 6, "weight" => 0],
+            ["major_id" => 4, "answer_id" => 6, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 6, "weight" => 1],
+            ["major_id" => 6, "answer_id" => 6, "weight" => 1],
+            ["major_id" => 7, "answer_id" => 6, "weight" => 1],
+
+            ["major_id" => 1, "answer_id" => 7, "weight" => 1],
+            ["major_id" => 2, "answer_id" => 7, "weight" => 2],
+            ["major_id" => 3, "answer_id" => 7, "weight" => 2],
+            ["major_id" => 4, "answer_id" => 7, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 7, "weight" => 0],
+            ["major_id" => 6, "answer_id" => 7, "weight" => 3],
+            ["major_id" => 7, "answer_id" => 7, "weight" => 2],
+
+            ["major_id" => 1, "answer_id" => 8, "weight" => 0],
+            ["major_id" => 2, "answer_id" => 8, "weight" => 0],
+            ["major_id" => 3, "answer_id" => 8, "weight" => 1],
+            ["major_id" => 4, "answer_id" => 8, "weight" => 3],
+            ["major_id" => 5, "answer_id" => 8, "weight" => 1],
+            ["major_id" => 6, "answer_id" => 8, "weight" => 0],
+            ["major_id" => 7, "answer_id" => 8, "weight" => 0],
+
+            ["major_id" => 1, "answer_id" => 9, "weight" => 1],
+            ["major_id" => 2, "answer_id" => 9, "weight" => 0],
+            ["major_id" => 3, "answer_id" => 9, "weight" => 2],
+            ["major_id" => 4, "answer_id" => 9, "weight" => 1],
+            ["major_id" => 5, "answer_id" => 9, "weight" => 3],
+            ["major_id" => 6, "answer_id" => 9, "weight" => 0],
+            ["major_id" => 7, "answer_id" => 9, "weight" => 1],
+
+            //Какви филмови сакаш да гледаш?
+            ["major_id" => 1, "answer_id" => 10, "weight" => 3],
+            ["major_id" => 2, "answer_id" => 10, "weight" => 2],
+            ["major_id" => 3, "answer_id" => 10, "weight" => 0],
+            ["major_id" => 4, "answer_id" => 10, "weight" => 1],
+            ["major_id" => 5, "answer_id" => 10, "weight" => 2],
+            ["major_id" => 6, "answer_id" => 10, "weight" => 1],
+            ["major_id" => 7, "answer_id" => 10, "weight" => 1],
+
+            ["major_id" => 1, "answer_id" => 11, "weight" => 1],
+            ["major_id" => 2, "answer_id" => 11, "weight" => 0],
+            ["major_id" => 3, "answer_id" => 11, "weight" => 3],
+            ["major_id" => 4, "answer_id" => 11, "weight" => 2],
+            ["major_id" => 5, "answer_id" => 11, "weight" => 3],
+            ["major_id" => 6, "answer_id" => 11, "weight" => 1],
+            ["major_id" => 7, "answer_id" => 11, "weight" => 0],
+
+            ["major_id" => 1, "answer_id" => 12, "weight" => 2],
+            ["major_id" => 2, "answer_id" => 12, "weight" => 1],
+            ["major_id" => 3, "answer_id" => 12, "weight" => 1],
+            ["major_id" => 4, "answer_id" => 12, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 12, "weight" => 3],
+            ["major_id" => 6, "answer_id" => 12, "weight" => 2],
+            ["major_id" => 7, "answer_id" => 12, "weight" => 1],
+
+            ["major_id" => 1, "answer_id" => 13, "weight" => 2],
+            ["major_id" => 2, "answer_id" => 13, "weight" => 3],
+            ["major_id" => 3, "answer_id" => 13, "weight" => 2],
+            ["major_id" => 4, "answer_id" => 13, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 13, "weight" => 1],
+            ["major_id" => 6, "answer_id" => 13, "weight" => 3],
+            ["major_id" => 7, "answer_id" => 13, "weight" => 3],
+
+            ["major_id" => 1, "answer_id" => 14, "weight" => 0],
+            ["major_id" => 2, "answer_id" => 14, "weight" => 1],
+            ["major_id" => 3, "answer_id" => 14, "weight" => 3],
+            ["major_id" => 4, "answer_id" => 14, "weight" => 2],
+            ["major_id" => 5, "answer_id" => 14, "weight" => 2],
+            ["major_id" => 6, "answer_id" => 14, "weight" => 2],
+            ["major_id" => 7, "answer_id" => 14, "weight" => 1],
+
+            //Во кои активности најмногу уживаш?
+            ["major_id" => 1, "answer_id" => 15, "weight" => 3],
+            ["major_id" => 2, "answer_id" => 15, "weight" => 2],
+            ["major_id" => 3, "answer_id" => 15, "weight" => 0],
+            ["major_id" => 4, "answer_id" => 15, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 15, "weight" => 2],
+            ["major_id" => 6, "answer_id" => 15, "weight" => 1],
+            ["major_id" => 7, "answer_id" => 15, "weight" => 1],
+
+            ["major_id" => 1, "answer_id" => 16, "weight" => 2],
+            ["major_id" => 2, "answer_id" => 16, "weight" => 1],
+            ["major_id" => 3, "answer_id" => 16, "weight" => 0],
+            ["major_id" => 4, "answer_id" => 16, "weight" => 3],
+            ["major_id" => 5, "answer_id" => 16, "weight" => 1],
+            ["major_id" => 6, "answer_id" => 16, "weight" => 0],
+            ["major_id" => 7, "answer_id" => 16, "weight" => 1],
+
+            ["major_id" => 1, "answer_id" => 17, "weight" => 0],
+            ["major_id" => 2, "answer_id" => 17, "weight" => 1],
+            ["major_id" => 3, "answer_id" => 17, "weight" => 3],
+            ["major_id" => 4, "answer_id" => 17, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 17, "weight" => 2],
+            ["major_id" => 6, "answer_id" => 17, "weight" => 3],
+            ["major_id" => 7, "answer_id" => 17, "weight" => 2],
+
+            ["major_id" => 1, "answer_id" => 18, "weight" => 0],
+            ["major_id" => 2, "answer_id" => 18, "weight" => 0],
+            ["major_id" => 3, "answer_id" => 18, "weight" => 2],
+            ["major_id" => 4, "answer_id" => 18, "weight" => 3],
+            ["major_id" => 5, "answer_id" => 18, "weight" => 1],
+            ["major_id" => 6, "answer_id" => 18, "weight" => 0],
+            ["major_id" => 7, "answer_id" => 18, "weight" => 0],
+
+            ["major_id" => 1, "answer_id" => 19, "weight" => 3],
+            ["major_id" => 2, "answer_id" => 19, "weight" => 1],
+            ["major_id" => 3, "answer_id" => 19, "weight" => 0],
+            ["major_id" => 4, "answer_id" => 19, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 19, "weight" => 2],
+            ["major_id" => 6, "answer_id" => 19, "weight" => 1],
+            ["major_id" => 7, "answer_id" => 19, "weight" => 1],
+
+            //Кој предмет најмногу ти се допаѓаше во средно училиште?
+            ["major_id" => 1, "answer_id" => 20, "weight" => 3],
+            ["major_id" => 2, "answer_id" => 20, "weight" => 2],
+            ["major_id" => 3, "answer_id" => 20, "weight" => 0],
+            ["major_id" => 4, "answer_id" => 20, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 20, "weight" => 3],
+            ["major_id" => 6, "answer_id" => 20, "weight" => 1],
+            ["major_id" => 7, "answer_id" => 20, "weight" => 0],
+
+            ["major_id" => 1, "answer_id" => 21, "weight" => 1],
+            ["major_id" => 2, "answer_id" => 21, "weight" => 3],
+            ["major_id" => 3, "answer_id" => 21, "weight" => 1],
+            ["major_id" => 4, "answer_id" => 21, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 21, "weight" => 0],
+            ["major_id" => 6, "answer_id" => 21, "weight" => 3],
+            ["major_id" => 7, "answer_id" => 21, "weight" => 2],
+
+            ["major_id" => 1, "answer_id" => 22, "weight" => 0],
+            ["major_id" => 2, "answer_id" => 22, "weight" => 0],
+            ["major_id" => 3, "answer_id" => 22, "weight" => 1],
+            ["major_id" => 4, "answer_id" => 22, "weight" => 3],
+            ["major_id" => 5, "answer_id" => 22, "weight" => 1],
+            ["major_id" => 6, "answer_id" => 22, "weight" => 0],
+            ["major_id" => 7, "answer_id" => 22, "weight" => 0],
+
+            ["major_id" => 1, "answer_id" => 23, "weight" => 0],
+            ["major_id" => 2, "answer_id" => 23, "weight" => 0],
+            ["major_id" => 3, "answer_id" => 23, "weight" => 3],
+            ["major_id" => 4, "answer_id" => 23, "weight" => 1],
+            ["major_id" => 5, "answer_id" => 23, "weight" => 2],
+            ["major_id" => 6, "answer_id" => 23, "weight" => 1],
+            ["major_id" => 7, "answer_id" => 23, "weight" => 1],
+
+            ["major_id" => 1, "answer_id" => 24, "weight" => 0],
+            ["major_id" => 2, "answer_id" => 24, "weight" => 0],
+            ["major_id" => 3, "answer_id" => 24, "weight" => 2],
+            ["major_id" => 4, "answer_id" => 24, "weight" => 3],
+            ["major_id" => 5, "answer_id" => 24, "weight" => 1],
+            ["major_id" => 6, "answer_id" => 24, "weight" => 0],
+            ["major_id" => 7, "answer_id" => 24, "weight" => 0],
+
+            ["major_id" => 1, "answer_id" => 25, "weight" => 3],
+            ["major_id" => 2, "answer_id" => 25, "weight" => 1],
+            ["major_id" => 3, "answer_id" => 25, "weight" => 0],
+            ["major_id" => 4, "answer_id" => 25, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 25, "weight" => 2],
+            ["major_id" => 6, "answer_id" => 25, "weight" => 1],
+            ["major_id" => 7, "answer_id" => 25, "weight" => 1],
+
+            //Како пристапуваш кон проблемите?
+            ["major_id" => 1, "answer_id" => 26, "weight" => 3],
+            ["major_id" => 2, "answer_id" => 26, "weight" => 2],
+            ["major_id" => 3, "answer_id" => 26, "weight" => 1],
+            ["major_id" => 4, "answer_id" => 26, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 26, "weight" => 3],
+            ["major_id" => 6, "answer_id" => 26, "weight" => 2],
+            ["major_id" => 7, "answer_id" => 26, "weight" => 1],
+
+            ["major_id" => 1, "answer_id" => 27, "weight" => 2],
+            ["major_id" => 2, "answer_id" => 27, "weight" => 3],
+            ["major_id" => 3, "answer_id" => 27, "weight" => 0],
+            ["major_id" => 4, "answer_id" => 27, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 27, "weight" => 1],
+            ["major_id" => 6, "answer_id" => 27, "weight" => 3],
+            ["major_id" => 7, "answer_id" => 27, "weight" => 3],
+
+            ["major_id" => 1, "answer_id" => 28, "weight" => 1],
+            ["major_id" => 2, "answer_id" => 28, "weight" => 1],
+            ["major_id" => 3, "answer_id" => 28, "weight" => 3],
+            ["major_id" => 4, "answer_id" => 28, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 28, "weight" => 2],
+            ["major_id" => 6, "answer_id" => 28, "weight" => 2],
+            ["major_id" => 7, "answer_id" => 28, "weight" => 2],
+
+            ["major_id" => 1, "answer_id" => 29, "weight" => 1],
+            ["major_id" => 2, "answer_id" => 29, "weight" => 1],
+            ["major_id" => 3, "answer_id" => 29, "weight" => 1],
+            ["major_id" => 4, "answer_id" => 29, "weight" => 3],
+            ["major_id" => 5, "answer_id" => 29, "weight" => 2],
+            ["major_id" => 6, "answer_id" => 29, "weight" => 0],
+            ["major_id" => 7, "answer_id" => 29, "weight" => 1],
+
+            //Кој тип на задачи најмногу ти одговараат?
+            ["major_id" => 1, "answer_id" => 30, "weight" => 3],
+            ["major_id" => 2, "answer_id" => 30, "weight" => 2],
+            ["major_id" => 3, "answer_id" => 30, "weight" => 0],
+            ["major_id" => 4, "answer_id" => 30, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 30, "weight" => 3],
+            ["major_id" => 6, "answer_id" => 30, "weight" => 1],
+            ["major_id" => 7, "answer_id" => 30, "weight" => 1],
+
+            ["major_id" => 1, "answer_id" => 31, "weight" => 2],
+            ["major_id" => 2, "answer_id" => 31, "weight" => 3],
+            ["major_id" => 3, "answer_id" => 31, "weight" => 0],
+            ["major_id" => 4, "answer_id" => 31, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 31, "weight" => 1],
+            ["major_id" => 6, "answer_id" => 31, "weight" => 2],
+            ["major_id" => 7, "answer_id" => 31, "weight" => 3],
+
+            ["major_id" => 1, "answer_id" => 32, "weight" => 1],
+            ["major_id" => 2, "answer_id" => 32, "weight" => 1],
+            ["major_id" => 3, "answer_id" => 32, "weight" => 3],
+            ["major_id" => 4, "answer_id" => 32, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 32, "weight" => 2],
+            ["major_id" => 6, "answer_id" => 32, "weight" => 2],
+            ["major_id" => 7, "answer_id" => 32, "weight" => 2],
+
+            ["major_id" => 1, "answer_id" => 33, "weight" => 1],
+            ["major_id" => 2, "answer_id" => 33, "weight" => 1],
+            ["major_id" => 3, "answer_id" => 33, "weight" => 1],
+            ["major_id" => 4, "answer_id" => 33, "weight" => 3],
+            ["major_id" => 5, "answer_id" => 33, "weight" => 1],
+            ["major_id" => 6, "answer_id" => 33, "weight" => 0],
+            ["major_id" => 7, "answer_id" => 33, "weight" => 1],
+
+            //Koj е твојот идеален начин за учење нови работи?
+            ["major_id" => 1, "answer_id" => 34, "weight" => 3],
+            ["major_id" => 2, "answer_id" => 34, "weight" => 2],
+            ["major_id" => 3, "answer_id" => 34, "weight" => 1],
+            ["major_id" => 4, "answer_id" => 34, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 34, "weight" => 3],
+            ["major_id" => 6, "answer_id" => 34, "weight" => 2],
+            ["major_id" => 7, "answer_id" => 34, "weight" => 2],
+
+            ["major_id" => 1, "answer_id" => 35, "weight" => 2],
+            ["major_id" => 2, "answer_id" => 35, "weight" => 3],
+            ["major_id" => 3, "answer_id" => 35, "weight" => 0],
+            ["major_id" => 4, "answer_id" => 35, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 35, "weight" => 1],
+            ["major_id" => 6, "answer_id" => 35, "weight" => 3],
+            ["major_id" => 7, "answer_id" => 35, "weight" => 3],
+
+            ["major_id" => 1, "answer_id" => 36, "weight" => 1],
+            ["major_id" => 2, "answer_id" => 36, "weight" => 1],
+            ["major_id" => 3, "answer_id" => 36, "weight" => 3],
+            ["major_id" => 4, "answer_id" => 36, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 36, "weight" => 2],
+            ["major_id" => 6, "answer_id" => 36, "weight" => 2],
+            ["major_id" => 7, "answer_id" => 36, "weight" => 2],
+
+            ["major_id" => 1, "answer_id" => 37, "weight" => 0],
+            ["major_id" => 2, "answer_id" => 37, "weight" => 1],
+            ["major_id" => 3, "answer_id" => 37, "weight" => 1],
+            ["major_id" => 4, "answer_id" => 37, "weight" => 3],
+            ["major_id" => 5, "answer_id" => 37, "weight" => 1],
+            ["major_id" => 6, "answer_id" => 37, "weight" => 0],
+            ["major_id" => 7, "answer_id" => 37, "weight" => 1],
+
+            //Што е најважно за тебе во идната кариера?
+            ["major_id" => 1, "answer_id" => 38, "weight" => 3],
+            ["major_id" => 2, "answer_id" => 38, "weight" => 2],
+            ["major_id" => 3, "answer_id" => 38, "weight" => 0],
+            ["major_id" => 4, "answer_id" => 38, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 38, "weight" => 3],
+            ["major_id" => 6, "answer_id" => 38, "weight" => 1],
+            ["major_id" => 7, "answer_id" => 38, "weight" => 1],
+
+            ["major_id" => 1, "answer_id" => 39, "weight" => 2],
+            ["major_id" => 2, "answer_id" => 39, "weight" => 3],
+            ["major_id" => 3, "answer_id" => 39, "weight" => 0],
+            ["major_id" => 4, "answer_id" => 39, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 39, "weight" => 1],
+            ["major_id" => 6, "answer_id" => 39, "weight" => 2],
+            ["major_id" => 7, "answer_id" => 39, "weight" => 3],
+
+            ["major_id" => 1, "answer_id" => 40, "weight" => 0],
+            ["major_id" => 2, "answer_id" => 40, "weight" => 1],
+            ["major_id" => 3, "answer_id" => 40, "weight" => 3],
+            ["major_id" => 4, "answer_id" => 40, "weight" => 0],
+            ["major_id" => 5, "answer_id" => 40, "weight" => 2],
+            ["major_id" => 6, "answer_id" => 40, "weight" => 3],
+            ["major_id" => 7, "answer_id" => 40, "weight" => 2],
+
+            ["major_id" => 1, "answer_id" => 41, "weight" => 0],
+            ["major_id" => 2, "answer_id" => 41, "weight" => 0],
+            ["major_id" => 3, "answer_id" => 41, "weight" => 0],
+            ["major_id" => 4, "answer_id" => 41, "weight" => 3],
+            ["major_id" => 5, "answer_id" => 41, "weight" => 1],
+            ["major_id" => 6, "answer_id" => 41, "weight" => 0],
+            ["major_id" => 7, "answer_id" => 41, "weight" => 0],
+        ]);
+    }
+    
+}

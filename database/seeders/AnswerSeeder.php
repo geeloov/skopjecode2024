@@ -27,47 +27,47 @@ class AnswerSeeder extends Seeder
                 "question_id" => 1
             ],
             [
-                "answer" => "Астронаут/научник",
-                "question_id" => 2
-            ],
-            [
-                "answer" => "Доктор/ветеринар",
-                "question_id" => 2
-            ],
-            [
-                "answer" => "Уметник/музичар",
-                "question_id" => 2
-            ],
-            [
-                "answer" => "Претприемач",
-                "question_id" => 2
-            ],
-            [
-                "answer" => "Sci-Fi",
-                "question_id" => 3
-            ],
-            [
-                "answer" => "Comedy",
-                "question_id" => 3
-            ],
-            [
-                "answer" => "Action/Thriller",
-                "question_id" => 3
-            ],
-            [
-                "answer" => "Documentary",
-                "question_id" => 3
-            ],
-            [
-                "answer" => "History",
-                "question_id" => 3
-            ],
-            [
                 "answer" => "Интроверт",
-                "question_id" => 4
+                "question_id" => 2
             ],
             [
                 "answer" => "Екстроверт",
+                "question_id" => 2
+            ],
+            [
+                "answer" => "Астронаут/научник",
+                "question_id" => 3
+            ],
+            [
+                "answer" => "Доктор/ветеринар",
+                "question_id" => 3
+            ],
+            [
+                "answer" => "Уметник/музичар",
+                "question_id" => 3
+            ],
+            [
+                "answer" => "Претприемач",
+                "question_id" => 3
+            ],
+            [
+                "answer" => "Sci-Fi",
+                "question_id" => 4
+            ],
+            [
+                "answer" => "Comedy",
+                "question_id" => 4
+            ],
+            [
+                "answer" => "Action/Thriller",
+                "question_id" => 4
+            ],
+            [
+                "answer" => "Documentary",
+                "question_id" => 4
+            ],
+            [
+                "answer" => "Drama",
                 "question_id" => 4
             ],
             [
@@ -114,6 +114,71 @@ class AnswerSeeder extends Seeder
                 "answer" => "Информатика",
                 "question_id" => 6
             ],
+            [
+                "answer" => "Логичко размислување и анализа",
+                "question_id" => 7
+            ],
+            [
+                "answer" => "Истражување и експериментирање",
+                "question_id" => 7
+            ],
+            [
+                "answer" => "Соработка и комуникација со други луѓе",
+                "question_id" => 7
+            ],
+            [
+                "answer" => "Креативни идеи и иновативни решенија",
+                "question_id" => 7
+            ],
+            [
+                "answer" => "Работа со броеви/податоци",
+                "question_id" => 8
+            ],
+            [
+                "answer" => "Анализа на природни процеси и експериментирање",
+                "question_id" => 8
+            ],
+            [
+                "answer" => "Организација на настани или комуникација со луѓе",
+                "question_id" => 8
+            ],
+            [
+                "answer" => "Дизајнирање, цртање/иновација",
+                "question_id" => 8
+            ],
+            [
+                "answer" => "Практична работа и решавање проблеми",
+                "question_id" => 9
+            ],
+            [
+                "answer" => "Истражување, читање и експериментирање",
+                "question_id" => 9
+            ],
+            [
+                "answer" => "Дискусии и размена на идеи со други луѓе",
+                "question_id" => 9
+            ],
+            [
+                "answer" => "Креативни проекти и визуелно учење",
+                "question_id" => 9
+            ],
+            [
+                "answer" => "Техничка прецизност и иновации",
+                "question_id" => 10
+            ],
+            [
+                "answer" => "Придонес кон науката и природата",
+                "question_id" => 10
+            ],
+            [
+                "answer" => "Работа со луѓе и создавање промени во општеството",
+                "question_id" => 10
+            ],
+            [
+                "answer" => "Креативна слобода и уметничко изразување",
+                "question_id" => 10
+            ],
+
             ]);
     }
 }
