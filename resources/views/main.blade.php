@@ -65,12 +65,12 @@
         </div>
 
 
-    
-            <!-- CTA Button -->
-            <a href="{{route('quiz.show')}}" class="bg-white text-blue-500 px-[45px] py-3 rounded-[10px] border border-black font-semibold hover:bg-blue-50 transition-colors">
-                Започнете сега
-            </a>
-        </div>
+   
+
+<a href="{{ route('login') }}" class="bg-white text-blue-500 px-[45px] py-3 rounded-[10px] border border-black font-semibold hover:bg-blue-50 transition-colors">
+    Започнете сега
+</a>
+
     
         <!-- Footer -->
         <footer class="absolute bottom-0 left-0 w-full text-center text-white text-sm py-4 ">

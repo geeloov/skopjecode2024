@@ -40,7 +40,7 @@
                     <span>Статистика</span>
                 </a>
             </nav>
-            <form action="{{ url('/logout') }}" method="POST" class="absolute bottom-5">
+            <form action="{{ route('logout') }}" method="POST" class="absolute bottom-5">
                     @csrf
                     <button type="submit" class="w-full flex items-center space-x-3 px-4 py-2 rounded-lg text-black hover:bg-red-100 transition-colors ">
                         <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">

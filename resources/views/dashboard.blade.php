@@ -14,12 +14,16 @@
     <div class="min-h-screen bg-gradient-to-r from-cyan-400 to-blue-500 flex flex-col items-center justify-center px-4">
         <!-- Main Content -->
         <div class="text-center max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 italic">
-                Започнете ја вашата авантура до совршено поле на студии
-            </h1>
-            
+     @php 
+    $user = Auth::user();
+@endphp
+
+<h1 class="text-4xl md:text-5xl font-bold text-white mb-4 italic">
+    Добредојде {{$user->name}}
+</h1>
+     
             <p class="text-white text-lg mb-12">
-                Откријте го патот кој најмногу ви одговара!
+                Откријте го патот кој најмногу ти одговара!
             </p>
     
             <!-- Cards Container -->
