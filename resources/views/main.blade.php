@@ -1,3 +1,18 @@
+<?php
+$url = "https://zenquotes.io/api/random";
+
+try {
+    $response = file_get_contents($url);
+    if ($response === FALSE) {
+        throw new Exception("Error fetching data from the API.");
+    }
+    $data = json_decode($response, true); // Decode JSON response
+    $quote = $data[0]["q"];
+    $author = $data[0]["a"];
+} catch (Exception $e) {
+    Log::error($e);
+}
+?>
 
 <html lang="en">
 <head>
@@ -18,9 +33,11 @@
                 Започнете ја вашата авантура до совршено поле на студии
             </h1>
             
-            <p class="text-white text-lg mb-12">
-                Откријте го патот кој најмногу ви одговара!
-            </p>
+            <div class="text-white text-lg mb-12 flex flex-col text-center">
+                <p class="text-xl font-semibold">{{$quote}}</p>
+                <p class="italic">- {{$author}}</p>
+            </div>
+
     
             <!-- Cards Container -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -44,9 +61,9 @@
                         <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                     </svg>
                 </div>
-                <h3 class="text-white text-xl font-semibold mb-2 transition-all duration-300 hover:text-cyan-100">Персонализирани прашања</h3>
+                <h3 class="text-white text-xl font-semibold mb-2 transition-all duration-300 hover:text-cyan-100">Сугестии</h3>
                 <p class="text-white/80 text-sm">
-                    Идентификувајте ги вашите интереси и преференции
+                    Добијте препораки и сугестии врз основа на вашите одговори
                 </p>
             </div>
 
@@ -57,9 +74,9 @@
                         <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
                     </svg>
                 </div>
-                <h3 class="text-white text-xl font-semibold mb-2 transition-all duration-300 hover:text-cyan-100">Персонализирани прашања</h3>
+                <h3 class="text-white text-xl font-semibold mb-2 transition-all duration-300 hover:text-cyan-100">Кариери</h3>
                 <p class="text-white/80 text-sm">
-                    Идентификувајте ги вашите интереси и преференции
+                    Истражете различни кариерни патишта и можности
                 </p>
             </div>
         </div>
