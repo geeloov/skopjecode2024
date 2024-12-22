@@ -26,9 +26,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-//     Route::get('/results', function () {
-//     return view('results');
-// });
+    //     Route::get('/results', function () {
+    //     return view('results');
+    // });
     Route::get("/quiz", [QuizController::class, "showStep"])->name("quiz.show");
     Route::get('/quiz/results', [QuizController::class, 'results'])->name('quiz.results');
     Route::get('/quiz/{step}', [QuizController::class, 'showStep'])->name('quiz.step');
@@ -47,12 +47,10 @@ Route::middleware(['auth', 'verified', "showDashboard"])->group(function () {
     Route::get("/answer/{answer}", [QuizController::class, "showAnswer"])->name("question.showAnswer");
     Route::delete("/answer/{answer}", [QuizController::class, "deleteAnswer"])->name("answer.delete");
 
-    Route::get('/admin-faculties', function () {
-    return view('admin_faculties');
-    });
+    Route::get('/admin-faculties', [QuizController::class, "showFaculties"]);
     Route::get('/admin-statistics', function () {
-    return view('admin_stats');
-});
+        return view('admin_stats');
+    });
 });
 
 Route::get('/about', function () {

@@ -231,5 +231,12 @@ class QuizController extends Controller
         return view("quiz.showAnswer", ["answer" => $answer]);
     }
 
+    public function showFaculties()
+    {
+
+        $faculties = University::all();
+        return view("admin_faculties", ["faculties" => $faculties]);
+    }
+
     public function test() {}
 }
