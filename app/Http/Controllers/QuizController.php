@@ -9,8 +9,6 @@ use App\Models\University;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 
-use function PHPUnit\Framework\isNull;
-
 class QuizController extends Controller
 {
 
@@ -53,6 +51,8 @@ class QuizController extends Controller
         return redirect()->route('quiz.step', ['step' => $nextStep]);
     }
 
+    
+
     public function results()
     {
         // Retrieve all answers from the session
@@ -76,11 +76,11 @@ class QuizController extends Controller
         }
 
 
-        $total = array_sum($majorWeights);
+        $total = array_sum($majorWeights); 
 
         $percentages = [];
         foreach ($majorWeights as $category => $value) {
-            $percentages[$category] = $total > 0 ? round(($value / $total) * 100, 0) : 0;
+            $percentages[$category] = $total > 0 ? round(($value / $total) * 100, 0) : 0; 
         }
 
         arsort($percentages);
@@ -89,13 +89,9 @@ class QuizController extends Controller
         $keys = array_keys($percentages);
         $values = array_values($percentages);
 
-        if (count($percentages) == 0) {
-            return redirect()->route("quiz.step", ["step" => 1]);
-        }
-
-        $majorId1 = Major::select("id")->where("name", $keys[0] ?? null)->pluck("id");
-        $majorId2 = Major::select("id")->where("name", $keys[1] ?? null)->pluck("id");
-        $majorId3 = Major::select("id")->where("name", $keys[2] ?? null)->pluck("id");
+        $majorId1 = Major::select("id")->where("name", $keys[0])->pluck("id");
+        $majorId2 = Major::select("id")->where("name", $keys[1])->pluck("id");
+        $majorId3 = Major::select("id")->where("name", $keys[2])->pluck("id");
 
         if ($majorId1->isEmpty()) {
             $majorId1 = null;
@@ -117,24 +113,27 @@ class QuizController extends Controller
             "major1" => $majorId1,
             "major2" => $majorId2,
             "major3" => $majorId3,
-            "major1_prob" => $values[0] ?? null,
-            "major2_prob" => $values[1] ?? null,
-            "major3_prob" => $values[2] ?? null,
+            "major1_prob" => $values[0],
+            "major2_prob" => $values[1],
+            "major3_prob" => $values[2],
         ]);
 
-        //test
-
-        $result = $user->result()->with("relatedMajor1", "relatedMajor2", "relatedMajor3")->first();
-
+        
         session()->forget('quiz_answers');
 
-        return view('results', ["result" => $result]);
+        return view('quiz.results', compact('answers'));
     }
 
     public function showQuestionForm()
-    {
-        return view('createQuestion');
-    }
+{
+    return view('createQuestion'); 
+}
+public function showQuestions()
+{
+    $questions = Question::all(); // Assuming you have a Question model
+    return view('admin_questions', compact('questions'));
+}
+
 
     public function storeQuestion(Request $request)
     {
@@ -144,7 +143,7 @@ class QuizController extends Controller
 
         Question::create(["question" => $request->question]);
 
-        return redirect()->route("dashboard");
+        return redirect()->route("question.show");
     }
 
     public function dashboard()
@@ -154,54 +153,68 @@ class QuizController extends Controller
         return view("dashboard", ["questions" => $questions]);
     }
 
-    public function addAnswers(Question $question)
+    public function destroyQuestion($id)
     {
-        $answers = $question->answers;
-        $majors = Major::all();
+        $question = Question::find($id);
 
-        return view('addAnswer', [
-            'question' => $question,
-            'answers' => $answers,
-            'majors' => $majors,
-        ]);
+        if (!$question) {
+            return redirect()->back()->with('error', 'Question not found.');
+        }
+
+      
+        $question->delete();
+
+        return redirect()->route('question.show');
     }
+
+   public function addAnswers(Question $question)
+{
+    $answers = $question->answers; 
+    $majors = Major::all(); 
+
+    return view('addAnswer', [
+        'question' => $question,
+        'answers' => $answers,
+        'majors' => $majors,
+    ]);
+}
 
     public function deleteAnswer(Answer $answer)
+{
+    // Detach all associated majors (if applicable)
+    $answer->majors()->detach();
+
+    // Delete the answer
+    $answer->delete();
+
+    // Redirect back to the question's answers page
+    return redirect()->route("question.addAnswers", ["question" => $answer->question_id])
+                     ->with("success", "Одговорот е успешно избришан!");
+}
+
+    public function addAnswer(Request $request, Question $question)
     {
-        // Detach all associated majors (if applicable)
-        $answer->majors()->detach();
+        // dd($request->all());
+        $majorFromForm = $request->except("answer", "_token");
 
-        // Delete the answer
-        $answer->delete();
+        $request->validate([
+            "answer" => ["required", "string"]
+        ]);
 
-        // Redirect back to the question's answers page
-        return redirect()->route("question.addAnswers", ["question" => $answer->question_id])
-            ->with("success", "Одговорот е успешно избришан!");
+        $answer = $question->answers()->create([
+            "answer" => $request->answer
+        ]);
+
+        foreach ($majorFromForm as $key => $value) {
+            $answer->majors()->attach($key, [
+                "weight" => $value
+            ]);
+        }
+
+        // dd($answer);
+
+        return redirect()->route("question.addAnswers", ["question" => $question]);
     }
-
-    // public function storeAnswer(Request $request, Question $question)
-    // {
-    //     // dd($request->all());
-    //     $universityFromForm = $request->except("answer", "_token");
-
-    //     $request->validate([
-    //         "answer" => ["required", "string"]
-    //     ]);
-
-    //     $answer = $question->answers()->create([
-    //         "answer" => $request->answer
-    //     ]);
-
-    //     foreach ($universityFromForm as $key => $value) {
-    //         $answer->majors()->attach($key, [
-    //             "weight" => $value
-    //         ]);
-    //     }
-
-    //     // dd($answer);
-
-    //     return redirect()->route("question.addAnswers", ["question" => $question]);
-    // }
 
     public function showAnswer(Answer $answer)
     {

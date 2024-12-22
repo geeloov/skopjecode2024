@@ -12,13 +12,10 @@ class Major extends Model
     use HasFactory;
 
     protected $fillable = [
-        "name",
-        "description"
+        "name"
     ];
 
-    protected $with = ["universities", "careers"];
-
-    public function universities(): HasMany
+    public function university(): HasMany
     {
         return $this->hasMany(University::class);
     }
