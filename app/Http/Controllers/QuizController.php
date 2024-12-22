@@ -118,10 +118,6 @@ class QuizController extends Controller
             "major3_prob" => $values[2],
         ]);
 
-        dd($percentages);
-        dd("Here");
-
-
         
         session()->forget('quiz_answers');
 
