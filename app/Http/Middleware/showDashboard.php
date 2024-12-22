@@ -21,6 +21,6 @@ class showDashboard
             return $next($request);
         }
 
-        return redirect()->route("quiz.step", ["step" => 1]);
+        return redirect()->route("quiz.show");
     }
 }
