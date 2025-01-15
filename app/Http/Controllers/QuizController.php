@@ -12,57 +12,24 @@ use Illuminate\Support\Facades\Auth as FacadesAuth;
 class QuizController extends Controller
 {
 
-    public function showStep($step = 1)
+    public function showStep()
     {
-        $questions = Question::with('answers')->get();
-
-        if ($step < 1 || $step > $questions->count()) {
-            abort(404);
-        }
-
-        $answers = session('quiz_answers', []);
-
-        return view('quiz.step', [
-            'step' => $step,
-            'question' => $questions[$step - 1],
-            'totalSteps' => $questions->count(),
-            'answers' => $answers,
-        ]);
+        return view("quiz.step");
     }
-
-    public function storeAnswer(Request $request, $step)
-    {
-        // Validate the selected answer
-        $request->validate([
-            'answer' => 'required',
-        ]);
-
-        // Store the answer in the session
-        $answers = session('quiz_answers', []);
-        $answers[$step] = $request->input('answer');
-        session(['quiz_answers' => $answers]);
-
-        // Redirect to the next step or finish
-        $nextStep = $step + 1;
-        if ($nextStep > Question::count()) {
-            return redirect()->route('quiz.results');
-        }
-
-        return redirect()->route('quiz.step', ['step' => $nextStep]);
-    }
-
 
 
     public function results()
     {
-        // Retrieve all answers from the session
-        $saveAnswers = session('quiz_answers', []);
 
         $user = FacadesAuth::user();
 
-        $user->answers()->attach($saveAnswers);
-
         $answers = $user->answers()->with('majors')->get();
+
+        if (!$answers->isEmpty()) {
+            // if user has already result just display them
+            $result = $user->result()->with("relatedMajor1", "relatedMajor2", "relatedMajor3")->first();
+            return view("results", compact("result"));
+        }
 
         $majorWeights = [];
 
@@ -90,7 +57,7 @@ class QuizController extends Controller
         $values = array_values($percentages);
 
         if (count($percentages) == 0) {
-            return redirect()->route("quiz.step", ["step" => 1]);
+            return redirect()->route("quiz.show");
         }
 
         $majorId1 = Major::select("id")->where("name", $keys[0] ?? null)->pluck("id");
@@ -126,8 +93,6 @@ class QuizController extends Controller
 
         $result = $user->result()->with("relatedMajor1", "relatedMajor2", "relatedMajor3")->first();
 
-        session()->forget('quiz_answers');
-
         return view('results', ["result" => $result]);
     }
 
@@ -137,7 +102,7 @@ class QuizController extends Controller
     }
     public function showQuestions()
     {
-        $questions = Question::all(); // Assuming you have a Question model
+        $questions = Question::paginate(5);
         return view('admin_questions', compact('questions'));
     }
 
@@ -188,20 +153,19 @@ class QuizController extends Controller
 
     public function deleteAnswer(Answer $answer)
     {
-        // Detach all associated majors (if applicable)
         $answer->majors()->detach();
 
-        // Delete the answer
+
         $answer->delete();
 
-        // Redirect back to the question's answers page
+
         return redirect()->route("question.addAnswers", ["question" => $answer->question_id])
             ->with("success", "Одговорот е успешно избришан!");
     }
 
     public function addAnswer(Request $request, Question $question)
     {
-        // dd($request->all());
+
         $majorFromForm = $request->except("answer", "_token");
 
         $request->validate([
@@ -218,7 +182,7 @@ class QuizController extends Controller
             ]);
         }
 
-        // dd($answer);
+
 
         return redirect()->route("question.addAnswers", ["question" => $question]);
     }
@@ -227,14 +191,13 @@ class QuizController extends Controller
     {
         $answer->load("majors");
 
-        // dd($answer->universities);
         return view("quiz.showAnswer", ["answer" => $answer]);
     }
 
     public function showFaculties()
     {
 
-        $faculties = University::all();
+        $faculties = University::paginate(8);
         return view("admin_faculties", ["faculties" => $faculties]);
     }
 

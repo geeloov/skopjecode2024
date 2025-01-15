@@ -89,11 +89,8 @@
     
                 <!-- Pagination -->
                 <div class="flex justify-between items-center mt-6">
-                    <div class="flex space-x-2">
-                        <button class="px-3 py-1 rounded-lg bg-white text-blue-500">1</button>
-                        <button class="px-3 py-1 rounded-lg text-white hover:bg-white/10">2</button>
-                        <button class="px-3 py-1 rounded-lg text-white hover:bg-white/10">3</button>
-                        <button class="px-3 py-1 rounded-lg text-white hover:bg-white/10">4</button>
+                    <div>
+                        {{$faculties->links("vendor.pagination.my-custom-navigation")}}
                     </div>
                     
                     <button class="bg-white text-blue-500 px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors border border-black hover:shadow-[0_4px_20px_rgb(0,0,0,0.25)]">

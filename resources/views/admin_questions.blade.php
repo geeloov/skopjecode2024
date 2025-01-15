@@ -91,18 +91,11 @@
 
 </div>
 </div>
-
-    
                 <!-- Pagination -->
-                <div class="flex justify-between items-center mt-6">
-                    <div class="flex space-x-2">
-                        @foreach(range(1, 4) as $page)
-                        <button class="px-3 py-1 rounded-lg {{ $page === 1 ? 'bg-white text-blue-500' : 'text-white hover:bg-white/10' }}">
-                            {{ $page }}
-                        </button>
-                        @endforeach
+        <div class="flex flex-row justify-between pt-10">
+                    <div>
+                    {{$questions->links("vendor.pagination.my-custom-navigation")}}
                     </div>
-                    
                     <a href="{{route('question.create')}}" class="bg-white text-blue-500 px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors">
                         Додади прашање
                     </a>
